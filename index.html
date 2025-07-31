@@ -97,6 +97,10 @@
               <input type="text" class="form-control" id="name" placeholder="Contoh: Razaan" required />
             </div>
             <div class="mb-3">
+              <label for="whatsapp" class="form-label">Nomor Whatsapp Untuk Reply Via Whatsapp</label>
+              <input type="text" id="whatsapp" placeholder="Contoh: +6281289215632 (opsional)" class="form-control">
+            </div>
+            <div class="mb-3">
               <label for="message" class="form-label">Pesan Ucapan</label>
               <textarea class="form-control" id="message" rows="3" placeholder="Tulis ucapan ulang tahun kamu disini..." required></textarea>
             </div>
@@ -192,10 +196,13 @@ const client = supabase.createClient(
    
     const message = document.getElementById('message').value.trim();
 
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+
     const { error } = await client.from('messages').insert({
       name,
       
       message,
+      whatsapp,
     });
 
     if (error) {
